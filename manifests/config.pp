@@ -6,6 +6,8 @@
 class monit::config (
   $use_syslog = false,
   $interval   = 30,
+  $interval = 120,
+  $httpd    = false,
 ) {
 
 include monit::params
