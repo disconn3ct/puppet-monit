@@ -1,3 +1,4 @@
+#
 class monit::params {
 
   case $::osfamily {

@@ -1,3 +1,4 @@
+#
 class monit::service {
 
   service {'monit':

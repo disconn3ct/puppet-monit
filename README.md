@@ -1,10 +1,8 @@
 # Monit Module
 
-[![Build Status](https://travis-ci.org/jbussdieker/puppet-monit.png?branch=master)](https://travis-ci.org/jbussdieker/puppet-monit)
+[![Build Status](https://travis-ci.org/skurylo/puppet-monit.png?branch=master)](https://travis-ci.org/skurylo/puppet-monit)
 
 This module manages installing, configuring and running processes using monit.
-
-http://forge.puppetlabs.com/jbussdieker/monit
 
 ## Parameters
 

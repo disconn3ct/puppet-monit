@@ -10,12 +10,12 @@
 # Note, if service is already defined in catalog, it would be redefined to monit provider.
 #
 define monit::process(
+  $start_command,
+  $stop_command,
   $matching = $name,
   $ensure   = 'running',
   $pidfile  = '',
   $timeout  = 30,
-  $start_command,
-  $stop_command
 ) {
 
   include monit

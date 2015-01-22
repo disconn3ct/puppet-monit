@@ -1,3 +1,4 @@
+#
 class monit(
   $interval = 120,
   $httpd    = false,

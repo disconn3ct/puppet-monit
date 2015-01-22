@@ -1,3 +1,4 @@
+#
 class monit::package {
 
   package {'monit':
