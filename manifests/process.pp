@@ -16,11 +16,17 @@ define monit::process(
   $ensure   = 'running',
   $pidfile  = '',
   $timeout  = 30,
+  $gid      = undef,
+  $uid      = undef,
 ) {
 
   include monit
   $servicep = $::monit::params::servicep
   $included = $::monit::params::included
+
+  if $uid != undef and $gid == undef {
+    fail('If you set uid, you must set gid')
+  }
 
   file { "${included}/${name}" :
     ensure  => present,

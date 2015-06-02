@@ -1,7 +1,7 @@
-<%- if @pidfile %>
+<%- if @pidfile -%>
 check process <%= @name %> with pidfile <%= @pidfile %>
-<%- else %>
+<%- else -%>
 check process <%= @name %> matching "<%= @matching %>"
-<%- end %>
-  start program = "<%= @start_command %>" with timeout <%= @timeout %> seconds
-  stop program  = "<%= @stop_command %>"
+<%- end -%>
+  start program = "<%= @start_command %>"<%- if @uid %> as uid "<%= @uid %>" and gid "<%= @gid %>"<%- end %> with timeout <%= @timeout %> seconds
+  stop program  = "<%= @stop_command %>"<%- if @uid %> as uid "<%= @uid %>" and gid "<%= @gid %>"<%- end %>
