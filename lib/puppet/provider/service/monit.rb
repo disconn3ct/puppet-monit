@@ -22,4 +22,9 @@ Puppet::Type.type(:service).provide(:monit, :parent => Puppet::Provider) do
   def stop
     `#{COMMAND} stop #{resource[:name]}`
   end
+
+  def restart
+    start
+    stop
+  end
 end
