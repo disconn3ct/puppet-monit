@@ -24,7 +24,7 @@ Puppet::Type.type(:service).provide(:monit, :parent => Puppet::Provider) do
   end
 
   def restart
-    start
     stop
+    start
   end
 end
