@@ -16,11 +16,17 @@ Puppet::Type.type(:service).provide(:monit, :parent => Puppet::Provider) do
   end
 
   def start
-    `#{COMMAND} start #{resource[:name]}`
+    system("#{COMMAND} start #{resource[:name]}")
+    unless $?.success?
+      raise "monit failed to start #{resource[:name]}"
+    end
   end
 
   def stop
-    `#{COMMAND} stop #{resource[:name]}`
+    system("#{COMMAND} stop #{resource[:name]}")
+    unless $?.success?
+      raise "monit failed to stop #{resource[:name]}"
+    end
   end
 
   def restart
