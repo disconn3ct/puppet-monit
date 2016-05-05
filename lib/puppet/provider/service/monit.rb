@@ -15,22 +15,31 @@ Puppet::Type.type(:service).provide(:monit, :parent => Puppet::Provider) do
     nil
   end
 
-  def start
-    system("#{COMMAND} start #{resource[:name]}")
+  def monit(action)
+    # If you issue commands too fast, you'll get a message
+    # Action failed -- Other action already in progress -- please try again later
+    # So we retry the command a few times
+    3.times { |i|
+      system("#{COMMAND} #{action} #{resource[:name]}")
+      if $?.success?
+        break
+      end
+      sleep i
+    }
     unless $?.success?
-      raise "monit failed to start #{resource[:name]}"
+      raise "monit failed to #{action} #{resource[:name]}"
     end
+  end
+
+  def start
+    monit('start')
   end
 
   def stop
-    system("#{COMMAND} stop #{resource[:name]}")
-    unless $?.success?
-      raise "monit failed to stop #{resource[:name]}"
-    end
+    monit('stop')
   end
 
   def restart
-    stop
-    start
+    monit('restart')
   end
 end
