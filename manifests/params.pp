@@ -4,7 +4,7 @@ class monit::params {
   case $::osfamily {
     'Debian': {
       $config = '/etc/monit/monitrc'
-      $included = '/etc/monit/monit.d'
+      $included = '/etc/monit/conf.d'
       $idfile = '/var/lib/monit/id'
       $statefile = '/var/lib/monit/state'
       $basedir = '/var/lib/monit/events'
